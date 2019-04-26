@@ -32,9 +32,7 @@ public class GeraEvidencias {
 		Path evidenciasPath = userDirPath.resolve("./evidencias");
 		String fileName = idTeste + "." + nomeTeste;
 		Font font = new Font(10);
-		System.out.println(userDirPath.toString());
 		File diretorio = new File(evidenciasPath.toString());
-		System.out.println(evidenciasPath.toString());
 		System.out.println(diretorio.mkdir());
 		caminho = evidenciasPath.resolve(fileName + ".jpg").toString();
 		PdfWriter.getInstance(document, new FileOutputStream(evidenciasPath.resolve(fileName + ".pdf").toString()));
