@@ -3,7 +3,7 @@ package telas;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Home {
+public class Produtos {
 	public WebDriver driver;
 
 	public void inserirNomeCompleto(WebDriver driver, String nome) throws Exception {
@@ -33,18 +33,4 @@ public class Home {
 		}
 		return validado;
 	}
-
-	public void acessarNovoProduto(WebDriver driver) throws Exception {
-		try {
-			driver.findElement(By.cssSelector("a[class='btn btn-primary pull-right h2']")).click();
-		} catch (Exception e) {
-			throw new Exception("Erro ao clicar em Produtos");
-		}
-	}
-	
-	public void nomeProduto(WebDriver driver, String nomeProduto) throws Exception {
-		try {
-		driver.findElement(By.id("campo1")).sendKeys(nomeProduto);
-		} catch (Exception)
-		}
 }
