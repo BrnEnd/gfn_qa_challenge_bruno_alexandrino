@@ -22,10 +22,10 @@ import util.GeraEvidencias;
 
 public class CT002 {
 	public static WebDriver driver;
-	GeraEvidencias evidencia = new GeraEvidencias();
+	static GeraEvidencias evidencia = new GeraEvidencias();
 	Home home = new Home();
 	Login login = new Login();
-	Document document;
+	static Document document;
 
 	@Before
 	public void setUp() throws DocumentException, MalformedURLException, IOException {
@@ -48,12 +48,12 @@ public class CT002 {
 		evidencia.TakeScreenShot("Step 3 - Clicar em pesquisar", document);
 		
 		Assert.assertTrue(home.validarProdutos(driver));
-		evidencia.encerrarEvidencia(document);
-
+		
 	}
 
 	@AfterClass
 	public static void afterClass() {
+		evidencia.encerrarEvidencia(document);
 		driver.quit();
 	}
 

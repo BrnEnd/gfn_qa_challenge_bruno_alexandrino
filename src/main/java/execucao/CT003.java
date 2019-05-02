@@ -17,16 +17,17 @@ import com.lowagie.text.DocumentException;
 import org.junit.Assert;
 import telas.Home;
 import telas.Login;
-
+import telas.Produtos;
 import util.GeraEvidencias;
 
 public class CT003 {
 	public static WebDriver driver;
-	GeraEvidencias evidencia = new GeraEvidencias();
+	static GeraEvidencias evidencia = new GeraEvidencias();
 	Home home = new Home();
 	Login login = new Login();
-	Document document;
-
+	static Document document;
+	Produtos produtos = new Produtos();
+	
 	@Before
 	public void setUp() throws DocumentException, MalformedURLException, IOException {
 		Path userDirPath = Paths.get(System.getProperty("user.dir"));
@@ -50,13 +51,28 @@ public class CT003 {
 		home.acessarNovoProduto(driver);
 		evidencia.TakeScreenShot("Step 4 - Clicar em novo produto", document);
 		
+		produtos.inserirNomeProduto(driver, "Teste");
+		evidencia.TakeScreenShot("Step 5 - Inserir nome produto", document);
 		
-		evidencia.encerrarEvidencia(document);
+		produtos.inserirPreco(driver, "50000");
+		evidencia.TakeScreenShot("Step 6 - Inserir Preco", document);
+		
+		produtos.selecionarData(driver);
+		evidencia.TakeScreenShot("Step 7 - Selecionar data", document);
+		
+		produtos.salvarProduto(driver);
+		evidencia.TakeScreenShot("Step 8 - Salvar Produto", document);
+		
+		Assert.assertTrue(home.validarProdutos(driver));
+		evidencia.TakeScreenShot("Step 9 - Validar redirecionamento para tela Produtos", document);
+		
+	
 
 	}
 
 	@AfterClass
 	public static void afterClass() {
+		evidencia.encerrarEvidencia(document);
 		driver.quit();
 	}
 

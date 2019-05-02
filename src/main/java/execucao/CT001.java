@@ -21,9 +21,9 @@ import util.GeraEvidencias;
 
 public class CT001 {
 	public static WebDriver driver;
-	GeraEvidencias evidencia = new GeraEvidencias();
+	static GeraEvidencias evidencia = new GeraEvidencias();
 	Login login = new Login();
-	Document document;
+	static Document document;
 
 	@Before
 	public void setUp() throws DocumentException, MalformedURLException, IOException {
@@ -41,12 +41,12 @@ public class CT001 {
 		
 		Assert.assertTrue((login.validarLogin()));
 		
-		evidencia.encerrarEvidencia(document);
-
+		
 	}
 
 	@AfterClass
 	public static void afterClass() {
+		evidencia.encerrarEvidencia(document);
 		driver.quit();
 	}
 

@@ -33,7 +33,9 @@ public class Home {
 		}
 		return validado;
 	}
-
+	
+	
+	
 	public void acessarNovoProduto(WebDriver driver) throws Exception {
 		try {
 			driver.findElement(By.cssSelector("a[class='btn btn-primary pull-right h2']")).click();
@@ -41,10 +43,5 @@ public class Home {
 			throw new Exception("Erro ao clicar em Produtos");
 		}
 	}
-	
-	public void nomeProduto(WebDriver driver, String nomeProduto) throws Exception {
-		try {
-		driver.findElement(By.id("campo1")).sendKeys(nomeProduto);
-		} catch (Exception)
-		}
+
 }
